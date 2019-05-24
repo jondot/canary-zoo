@@ -1,0 +1,42 @@
+reporters:
+  junit: {}
+  console: {}
+
+http_interactions:
+- request:
+    id: "get-simply"
+    desc: "should get simply"
+    method: get
+    uri: http://example.com/
+  response:
+    status_code: "200"
+- request:
+    id: missing
+    desc: missing
+    method: get
+    uri: http://example.com/foo
+  response:
+    status_code: "404"
+- request:
+    uri: http://example.com/foo
+  response:
+    status_code: "404"
+- request:
+    uri: https://google.com
+  response:
+    status_code: "200"
+  cert:
+    max_days: 1000
+    issuer: .*Google.*
+    subject: Google LLC
+- request:
+    id: "get-a-lot"
+    desc: "gets and benchmarks"
+    method: get
+    uri: http://example.com/
+  benchmark:
+    times: 10
+    avg_ms: 1200
+    p95_ms: 4000
+    p99_ms: 4000
+    time_ms: 5000
