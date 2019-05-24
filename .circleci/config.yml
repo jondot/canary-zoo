@@ -7,4 +7,4 @@ jobs:
       - checkout
       - run: ./canary run
       - store_test_results:
-          path: junit.xml
+          path: junit-out/
