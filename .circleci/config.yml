@@ -5,6 +5,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run: ./canary
+      - run: ./canary run
       - store_test_results:
           path: junit.xml
